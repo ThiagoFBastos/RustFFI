@@ -1,2 +1,2 @@
-gcc -c sum.c -msse2
-ar rcs libsum.lib sum.o
+gcc -c cmath.c -msse2
+ar rcs libcmath.lib cmath.o
