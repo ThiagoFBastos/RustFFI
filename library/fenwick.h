@@ -1,16 +1,16 @@
-#ifndef FENWICK_H
-#define FENWICK_H
+#pragma once
 
-struct Fenwick {
-    int *sum;
-    int n;
-};
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 typedef struct Fenwick Fenwick;
 
 Fenwick* make_fenwick(int n);
-void update(Fenwick* ft, int k, int value);
-int query(const Fenwick* ft, int k);
-void delete_fenwick(Fenwick* ft);
+void update_fenwick(Fenwick* ft, int k, int value);
+int query_fenwick(const Fenwick* ft, int k);
+void destroy_fenwick(Fenwick* ft);
 
+#ifdef __cplusplus
+}
 #endif

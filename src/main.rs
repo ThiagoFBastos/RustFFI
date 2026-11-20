@@ -10,15 +10,14 @@ unsafe extern "C" {
 #[link(name = "libfenwick", kind = "static")]
 unsafe extern "C" {
     unsafe fn make_fenwick(n: i32) -> *mut Fenwick;
-    unsafe fn update(ft: * mut Fenwick, k: i32, value: i32);
-    unsafe fn query(ft: * mut Fenwick, k: i32) -> i32;
-    unsafe fn delete_fenwick(ft: *mut Fenwick);
+    unsafe fn update_fenwick(ft: * mut Fenwick, k: i32, value: i32);
+    unsafe fn query_fenwick(ft: * mut Fenwick, k: i32) -> i32;
+    unsafe fn destroy_fenwick(ft: *mut Fenwick);
 }
 
 #[repr(C)]
 struct Fenwick {
-    sum: *mut i32,
-    n: i32
+    _private: [u8; 0],
 }
 
 fn main() {
@@ -37,15 +36,15 @@ fn main() {
         let ft = make_fenwick(vet2.len() as i32);
 
         for i in 1..=vet2.len() {
-            update(ft, i as i32, vet2[i - 1]);
+            update_fenwick(ft, i as i32, vet2[i - 1]);
         }
 
         for i in 1..=vet2.len() {
-            let res = query(ft, i as i32);
+            let res = query_fenwick(ft, i as i32);
             println!("soma = {}", res);
         }
     
-        delete_fenwick(ft);
+        destroy_fenwick(ft);
 
     }
 }
