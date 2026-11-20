@@ -1,5 +1,6 @@
 #include "fenwick.h"
 #include <vector>
+#include <cassert>
 
 struct Fenwick {
     Fenwick(int n)
@@ -10,6 +11,8 @@ struct Fenwick {
     }
 
     void update(int k, int value) {
+        assert(k >= 1 && k <= length);
+
         for(; k <= length; k += k & -k)
             sum[k] += value;
     }
@@ -17,15 +20,17 @@ struct Fenwick {
     int query(int k) const {
         int answer {};
 
+        assert(k <= length);
+
         for(; k > 0; k -= k & -k)
             answer += sum[k];
 
         return answer;
     }
 
-
+private:
     std::vector<int> sum;
-    int length;    
+    int length;
 };
 
 extern "C" {

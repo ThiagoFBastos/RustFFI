@@ -6,7 +6,7 @@ REM Initialize MSVC environment
 call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
 if errorlevel 1 exit /b 1
 
-REM Compile C with MinGW
+REM Compile C with MSVC
 cl /c /EHsc /std:c11 /arch:SSE2 cmath.c /Focmath.obj
 if errorlevel 1 exit /b 1
 

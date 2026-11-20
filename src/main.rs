@@ -11,7 +11,7 @@ unsafe extern "C" {
 unsafe extern "C" {
     unsafe fn make_fenwick(n: i32) -> *mut Fenwick;
     unsafe fn update_fenwick(ft: * mut Fenwick, k: i32, value: i32);
-    unsafe fn query_fenwick(ft: * mut Fenwick, k: i32) -> i32;
+    unsafe fn query_fenwick(ft: * const Fenwick, k: i32) -> i32;
     unsafe fn destroy_fenwick(ft: *mut Fenwick);
 }
 
@@ -45,6 +45,5 @@ fn main() {
         }
     
         destroy_fenwick(ft);
-
     }
 }
